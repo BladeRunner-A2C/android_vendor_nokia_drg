@@ -6,6 +6,25 @@ soong_namespace {
 }
 
 cc_prebuilt_library_shared {
+	name: "libantradio",
+	owner: "nokia",
+	strip: {
+		none: true,
+	},
+	target: {
+		android_arm: {
+			srcs: ["proprietary/lib/libantradio.so"],
+		},
+		android_arm64: {
+			srcs: ["proprietary/lib64/libantradio.so"],
+		},
+	},
+	compile_multilib: "both",
+	check_elf_files: false,
+	prefer: true,
+}
+
+cc_prebuilt_library_shared {
 	name: "libaudio_log_utils",
 	owner: "nokia",
 	strip: {
@@ -295,13 +314,6 @@ dex_import {
 	owner: "nokia",
 	jars: ["proprietary/product/framework/vendor.qti.ims.rcsconfig-V1.0-java.jar"],
 	product_specific: true,
-}
-
-dex_import {
-	name: "vendor.qti.hardware.soter-V1.0-java",
-	owner: "nokia",
-	jars: ["proprietary/system_ext/framework/vendor.qti.hardware.soter-V1.0-java.jar"],
-	system_ext_specific: true,
 }
 
 prebuilt_etc_xml {
